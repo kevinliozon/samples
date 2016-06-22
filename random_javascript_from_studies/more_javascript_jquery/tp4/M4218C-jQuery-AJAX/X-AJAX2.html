@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="jquery-1.11.2.min.js"/></script>
+  <link href="style-json.css" type="text/css" rel="stylesheet"/>
+</head>
+<body>
+  <div>
+    <button id="cb"/>AJAX</button>
+    <span id="msg"></span>
+  </div>
+
+<script>
+//var CB_URL="http://pccb/jQuery/cbJSON.php";
+var CB_URL="http://cbslack.borelly.net/~cb/cbURL.php?q=meteohttp://http://cbslack.borelly.net/~cb/cbJSON.php"; //http://cbslack.borelly.net/~cb/cbURL.php?q=meteo
+$(document).ready(function(){
+  $("#cb").click(function() {
+    $("#msg").append("<br/>Click sur le bouton...");
+    var jsonQuery=null;
+    $.ajax({
+      url : CB_URL,
+      data : jsonQuery,
+      method: "GET",
+      dataType : "json"
+    }).done(function(jsonObj) {
+      console.log("AJAX OK...");
+      $("#msg").append("<br/>I2 : "+jsonObj.i2);
+      $("#msg").append("<br/>I6 : "+jsonObj.i3.i5.i6);
+    }).fail(function() {
+      $("#msg").append("<br/>AJAX error !!!");
+    });
+  });
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,19 @@
+body{
+  background-color:white;
+}
+h1,.center{
+  text-align:center;
+}
+div{
+  padding:2px;
+}
+span.msg {
+  color:red;
+}
+div {
+  width:600px;
+  text-align:center;
+  margin:10px auto 10px auto;
+  border:thin solid pink;
+  border-radius:8px;
+}

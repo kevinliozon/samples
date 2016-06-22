@@ -1,0 +1,180 @@
+<html>
+	
+	<head>
+		<title>Exo 2 - morpion</title>
+		<meta http-equiv="content-type" content="text/html; charset=iso-8859-1" />
+	</head>
+	
+	<body>
+	
+		<table>
+			<tr>
+				<td><img src="vide.jpg"></td>
+				<td><img src="vide.jpg"></td>
+				<td><img src="vide.jpg"></td>
+			</tr>
+			<tr>
+				<td><img src="vide.jpg"></td>
+				<td><img src="vide.jpg"></td>
+				<td><img src="vide.jpg"></td>
+			</tr>			
+			<tr>
+				<td><img src="vide.jpg"></td>
+				<td><img src="vide.jpg"></td>
+				<td><img src="vide.jpg"></td>
+			</tr>
+		</table>
+		
+		<!-- RESET: Fonction en fin de script -->
+		
+		<input type="button" value="Reset" id="reset" onClick="rejouer();"/>		
+	
+	</body>
+	
+	<script>
+	
+		var imgs=document.images; // contient le tableau d'images
+		for(var i=0; i<imgs.length; i++)
+		{	
+			imgs[i].onclick=function() // onmouseover (quand souris passe sur la case) ou onclick 
+			{
+				jouer(this); // this=image cliquée
+			}
+			imgs[i].onmouseover=function()
+			{
+				if(estCaseVide(this))
+				{
+					this.src="survole.jpg";
+				}	
+			}
+			imgs[i].width=100;
+			imgs[i].height=100;
+			imgs[i].onmouseout=function()
+			{
+				if(this.src.indexOf("survole.jpg")!=-1)
+				{
+					this.src="vide.jpg";
+				}
+			}
+		}
+		
+		var jetons=["vide.jpg","croix.jpg","disque.jpg"];
+		var joueur=1;
+		
+		function jouer (image)
+		{
+			if(estCaseVide(image))
+			{
+				image.src=jetons[joueur];
+				if(jeuGagnant())
+				{
+					alert("joueur "+joueur+" a gagné");
+					location.reload();
+					return;
+				}	
+				if(joueur==1)
+				{
+					joueur=2;
+				}
+				else
+				{
+					joueur=1;
+				}
+				if(estGrillePleine())
+				{
+					alert("Match nul");
+					location.reload();
+					return;
+				}
+				joueur=2;
+				var r;
+				do
+				{
+					r=Math.round(Math.random()*(imgs.length-1));
+				}
+				while(!estCaseVide(imgs[r]));
+				imgs[r].src=jetons[joueur];
+				if(jeuGagnant())
+				{
+					alert("La machine a gagné");
+					location.reload();
+					return;
+				}
+				joueur=1;				
+			}
+		}
+		function estCaseVide(image)
+		{
+			if((image.src.indexOf("vide.jpg")!=-1)||(image.src.indexOf("survole.jpg")!=-1)) // indexOf permet de vérifier une chaine de carac, si -1 ça veut dire absence
+			{
+				return true;
+			}
+			else
+			{
+				return false;
+			}	
+		}
+		function estGrillePleine()
+		{
+			for(var i=0; i<imgs.length; i++)
+			{
+				if(estCaseVide(imgs[i]))
+				{
+					return false;
+				}
+			}
+			return true;	
+		}
+		function jeuGagnant()
+		{
+			//lignes 012 puis 345 et la dernière 678
+			if(!estCaseVide(imgs[0])&&(imgs[0].src==imgs[1].src)&&(imgs[1].src==imgs[2].src))
+			{
+				return true; 
+			}
+			if(!estCaseVide(imgs[3])&&(imgs[3].src==imgs[4].src)&&(imgs[4].src==imgs[5].src))
+			{
+				return true; 
+			}
+			if(!estCaseVide(imgs[6])&&(imgs[6].src==imgs[7].src)&&(imgs[7].src==imgs[8].src))
+			{
+				return true; 
+			}
+			// colonnes 036 puis 147 puis 258
+			if(!estCaseVide(imgs[0])&&(imgs[0].src==imgs[3].src)&&(imgs[3].src==imgs[6].src))
+			{
+				return true; 
+			}
+			if(!estCaseVide(imgs[1])&&(imgs[1].src==imgs[4].src)&&(imgs[4].src==imgs[7].src))
+			{
+				return true; 
+			}
+			if(!estCaseVide(imgs[2])&&(imgs[2].src==imgs[5].src)&&(imgs[5].src==imgs[8].src))
+			{
+				return true; 
+			}
+			//diagonales 048 puis 246
+			if(!estCaseVide(imgs[0])&&(imgs[0].src==imgs[4].src)&&(imgs[4].src==imgs[8].src))
+			{
+				return true; 
+			}
+			if(!estCaseVide(imgs[2])&&(imgs[2].src==imgs[4].src)&&(imgs[4].src==imgs[6].src))
+			{
+				return true; 
+			}				
+				return false; 		
+		}
+		
+		//--RESET--//
+		
+		function rejouer()
+		{
+			for(var i=0; i<imgs.length; i++)
+			{
+				imgs[i].src="vide.jpg";
+			}
+		}
+		
+	</script>
+
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>TP4</title>
+		<meta name="author" content="Liozon Kévin" />
+		<meta name="description" content="tp4" />
+		<meta name="keywords"  content="" />
+		<meta name="Resource-type" content="Document" />
+
+
+		<link rel="stylesheet" type="text/css" href="css/style.css" />
+		
+	</head>
+	
+	<body>
+		
+		<header>
+			
+		</header>
+		
+		
+
+						<input type="text" name="val1" id="val1"/><br/>
+						<select>
+						  <option value="AED">Dirham</option>
+						  <option value="AFN">Afghani</option>
+						  <option value="ALL">Lek</option>
+						  <option value="AMD">Dram</option>
+						</select>
+						<br/>
+						<select>
+						  <option value="AED">Dirham</option>
+						  <option value="AFN">Afghani</option>
+						  <option value="ALL">Lek</option>
+						  <option value="AMD">Dram</option>
+						</select>
+						<br/>
+						<button id="cb"/>Afficher</button>
+						<span id="msg"></span>
+
+				
+				
+		<footer>
+					
+		</footer>
+		
+		
+		<script type="text/javascript" src="js/jquery-1.7.1.js"></script>
+		<script type="text/javascript" src="js/jQueryRotate.2.2.js"></script>
+		<script src="http://www.localeplanet.com/api/auto/currencymap.json?name=Y"></script>
+		<script src="http://finance.yahoo.com/webservice/v1/symbols/allcurrencies/quote?format=json"></script>
+		
+		<script type="text/javascript">
+		
+			{
+			"AED":{"symbol":"AED","name":"dirham des Émirats arabes unis","symbol_native":"د.إ.\u200F","decimal_digits":2,"rounding":0.0,"code":"AED","name_plural":"dirhams des Émirats arabes unis"},
+			"AFN":{"symbol":"AFN","name":"afghani afghan","symbol_native":"؋","decimal_digits":0,"rounding":0.0,"code":"AFN","name_plural":"afghanis afghan"},
+			"ALL":{"symbol":"ALL","name":"lek albanais","symbol_native":"Lek","decimal_digits":0,"rounding":0.0,"code":"ALL","name_plural":"leks albanais"},
+			"AMD":{"symbol":"AMD","name":"dram arménien","symbol_native":"դր.","decimal_digits":0,"rounding":0.0,"code":"AMD","name_plural":"drams arméniens"}
+			}
+			
+		</script>
+		
+		<script type="text/javascript">
+			
+			$(document).ready(function(){
+			  $("#cb").click(function() {
+				var val1=$("#val1").val(); // recupère la 1re valeur rentrée
+				var CB_URL="http://cbslack.borelly.net/~cb/cbURL.php?q=54678952142522554565"; //http://cbslack.borelly.net/~cb/cbURL.php?q=meteo http://http://cbslack.borelly.net/~cb/cbJSON.php
+				var jsonQuery=null;
+				$.ajax({
+				  url : CB_URL,
+				  data : jsonQuery,
+				  method: "GET",
+				  dataType : "json"
+				}).done(function(jsonObj) {
+				  console.log("AJAX OK...");
+				  $("#msg").append("test"); //censé afficher la valeur convertie
+				}).fail(function() {
+				  $("#msg").append("<br/>AJAX error !!!");
+				});
+			  });
+			});
+			
+		</script>		
+	</body>
+	
+</html>

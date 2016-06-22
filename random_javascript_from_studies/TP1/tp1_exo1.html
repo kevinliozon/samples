@@ -1,0 +1,29 @@
+<html>
+	<head>
+		<title>Exo 1</title>
+		<meta http-equiv="content-type" content="text/html; charset=iso-8859-1" />
+	</head>
+	<body>
+		<table>
+			<tr>
+				<td><img src="camion.jpg"></td>
+				<td><img src="chaussures.jpg"></td>
+				<td><img src="plage.jpg"></td>
+				<td><img src="volvo.jpg"></td>
+			</tr>
+		</table>
+	</body>
+	<script>
+	var tab=["camion.jpg","chaussures.jpg","plage.jpg","volvo.jpg"]; // dans l'ordre de valeurs 0, 1, 2, 3
+	setInterval("changer();", 200); //altère les images toutes les 200 ms
+	function changer()
+	{
+		var a=Math.round(Math.random()*(tab.length-1)); //round=arrondie random=valeur entre 0 et 3
+		for (var i=0; i<document.images.length; i++)
+		{
+			document.images[i].src=tab[(a+i)%4]; /* remplace l'image i par une des 4 de telle sorte
+													que l'on ait pas plusieurs fois la même: (a+i)%4 */
+		}
+	}
+	</script>
+</html>

@@ -1,0 +1,20 @@
+<form onsubmit="verifier()"> 
+<table>
+   <tr> <td>Nom et Prénom: <input type="text"/>  </td></tr>
+   <tr> <td>E-mail: <input type="text"id="courriel"/></td></tr>
+   <tr> <td> <INPUT TYPE="submit" NAME="submit" VALUE="Valider"> </td> </tr>
+   
+</table>
+</form>
+<script>
+
+
+function verifier(){
+
+var er=/^[a-zA-Z0-9]+(\.[a-zA-Z0-9]+)?@[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/;
+var courriel=document.getElementById("courriel").value;
+if(!er.test(courriel)) {alert("...");
+}
+}
+
+</script>

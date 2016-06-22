@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>TP2</title>
+		<meta name="author" content="Liozon Kévin" />
+		<meta name="description" content="tp2" />
+		<meta name="keywords"  content="" />
+		<meta name="Resource-type" content="Document" />
+
+
+		<link rel="stylesheet" type="text/css" href="css/style.css" />
+		
+	</head>
+	
+	<body>
+		
+		<header>
+			<img class="gael" src="images/beau.jpg" width="100px" height="100px">
+			<img class="gael" src="images/beau1.jpg" width="100px" height="100px">
+			<img class="gael" src="images/beau2.jpg" width="100px" height="100px">
+			<img class="gael" src="images/beau3.jpg" width="100px" height="100px">
+			<img class="gael" src="images/beau4.jpg" width="100px" height="100px">			
+		</header>
+		
+		<!-- ex3 2
+		<img src="images/beau.jpg" style="width:100px;" onmouseover="this.style.width='200px'" onmouseout="this.style.width='100px'"/>
+		<img src="images/beau.jpg" style="width:100px;" onmouseover="this.style.width='200px'" onmouseout="this.style.width='100px'"/>
+		<img src="images/beau.jpg" style="width:100px;" onmouseover="this.style.width='200px'" onmouseout="this.style.width='100px'"/>
+		<img src="images/beau.jpg" style="width:100px;" onmouseover="this.style.width='200px'" onmouseout="this.style.width='100px'"/>
+		<img src="images/beau.jpg" style="width:100px;" onmouseover="this.style.width='200px'" onmouseout="this.style.width='100px'"/>
+		-->
+		
+		<section id="main">
+		
+			<section id="section1">
+				<article class="intro">
+					
+				</article>				
+			</section>
+			
+		</section>
+				
+		<footer>
+        		
+		</footer>
+
+		<script type="text/javascript" src="js/jquery-1.7.1.js"></script>
+		<script type="text/javascript" src="js/jQueryRotate.2.2.js"></script>
+		
+		<script type="text/javascript">
+			$(document).ready(function()
+			{
+				$(".gael").mouseenter(function()
+				{
+					$(this).animate({
+					height:"150px",
+					width:"150px"},200);
+					
+				});
+				$(".gael").mouseleave(function()
+				{
+				$(this).animate(
+				{
+					height: "100px",
+					width:"100px"},200);
+					
+				});
+			});
+		</script>
+		
+	</body>
+	
+</html>

@@ -1,0 +1,126 @@
+<html>
+
+<head>
+
+    <title>calculatrice</title>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+
+</head>
+
+<body>
+    <center>
+    <table border="1px">
+        <tr>
+            <td colspan="5"> <!-- colspan aligne la zone d'input avec le tableau -->
+                <input type="text" id="id" size="40" readonly />
+                <!-- readonly permet de ne pas intéragir avec la zone d'input -->
+            </td>
+        </tr>
+        <tr align=center>
+            <td width=20 height=20><input type="button" value="C" onclick='remove_calc()'/></td>
+            <td width=20 height=20><input type="button" value="AC" onclick='display("")'/></td> <!-- appelle directement la fonction display pour afficher du vide -->
+			<td width=20 height=20><input type="button" value="^" onclick='egal2("^")'/></td>
+			<td width=20 height=20><input type="button" value="log" onclick='egal2("log")'/></td>
+			
+        </tr>
+        <tr align=center>
+            <td><input type="button" value="7" onclick='add_calc("7")'/></td>
+            <td><input type="button" value="8" onclick='add_calc("8")'/></td>
+            <td><input type="button" value="9" onclick='add_calc("9")'/></td>
+            <td><input type="button" value="/" onclick='add_calc("/")'/></td>
+			<td width=20 height=20><input type="button" value="%" onclick='add_calc("%")'/></td>
+        </tr>
+        <tr align=center>
+            <td><input type="button" value="4" onclick='add_calc("4")'/></td>
+            <td><input type="button" value="5" onclick='add_calc("5")'/></td>
+            <td><input type="button" value="6" onclick='add_calc("6")'/></td>
+            <td><input type="button" value="*" onclick='add_calc("*")'/></td> 
+            <td><input type="button" value=" exp " onclick="egal2('exp')"></td>			
+        </tr>    
+        <tr align=center>
+            <td><input type="button" value="1" onclick='add_calc("1")'/></td>
+            <td><input type="button" value="2" onclick='add_calc("2")'/></td>
+            <td><input type="button" value="3" onclick='add_calc("3")'/></td>
+            <td><input type="button" value="-" onclick='add_calc("-")'/></td>    
+			<td><input type="button" value=" sqrt " onclick="egal2('sqrt')"></td>			
+        </tr>    
+        <tr align=center>
+            <td><input type="button" value="." onclick='add_calc(".")'/></td>
+            <td><input type="button" value="0" onclick='add_calc("0")'/></td>
+            <td><input type="button" value="=" onclick='egal()'/></td>
+            <td><input type="button" value="+" onclick='add_calc("+")'/></td>
+			<td><input type="button" value="&plusmn;" onclick='plus_minus("+-");' /></td>
+        </tr>            
+    </table>
+    </center>
+</body>
+
+<script>
+
+	function remove_calc(val) // correspond à C
+	{
+		if(document.getElementById("id").value<10 && document.getElementById("id").value>-10)
+		{
+			document.getElementById("id").value=""; // si inférieur à la dizaine on réinitialise par défaut
+		}		
+		else
+		{
+			document.getElementById("id").value=document.getElementById("id").value.slice(0,document.getElementById("id").value.length-1); // on supprime le dernier de la chaîne (length-1)
+		}
+	}
+	
+	function plus_minus(val) // inverse positif/négatif
+	{
+		document.getElementById("id").value=document.getElementById("id").value*(-1);
+	}
+
+	
+	function display(val) // affichage
+	{
+		document.getElementById("id").value=val;
+	}
+	function add_calc(val)
+	{
+		document.getElementById("id").value+=val; // + nous permet d'ajouter plusieurs calculs à la suite
+	}
+	
+	var calc = document.getElementById("id");
+	
+	function egal2(special)  //Fonction Math pour les opérations spéciales, mais ne fonctionne qu'avec les racines carrées visiblement...
+	{
+		calc.value = Math[special](eval(calc.value))
+	}
+	
+	
+	/*unction pow(val) // gestion des puissances (non gérées par eval() apparement...)
+	{
+		document.getElementById("id").value+=val;
+		var val1=val;
+		var val2=val;
+		var val1=/[\d$]/; // signifier avant ^
+		var val2=/[\d$]/; // signifier après ^
+		var val3=Math.pow(val1, val2);
+	}
+	
+	unction log(val) // gestion des logarithmes (non gérées par eval() apparement...)
+	{
+		document.getElementById("id").value+=val;
+		var val1=/[\d$]/; // signifier avant log
+		var val2=/[\d$]/; // signifier après log
+		Math.pow(val1, val2);
+	}*/
+	
+	function egal() // undefined par défaut
+	{ 
+		try 
+		{ 
+		  display(eval(document.getElementById("id").value))
+		} 
+		catch(egal) // si rien après un opérateurex: "3*="
+		{
+		  display('Error')
+		} 
+	}  
+</script>
+    
+</html>

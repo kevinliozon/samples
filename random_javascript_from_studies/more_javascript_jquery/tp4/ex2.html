@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>TP4</title>
+	<meta name="author" content="Liozon Kévin" />
+	<meta name="description" content="tp4" />
+	<meta name="keywords"  content="" />
+	<meta name="Resource-type" content="Document" />
+  <script src="js/jquery-1.11.2.min.js"/></script>
+  <link href="css/style-json.css" type="text/css" rel="stylesheet"/>
+</head>
+<body>
+  <div>
+	<input type="text" id="ville"></input>
+    <button id="cb"/>METEO</button>
+    <span id="msg"></span>
+  </div>
+
+<script>
+//var CB_URL="http://pccb/jQuery/cbJSON.php";
+$(document).ready(function(){
+  $("#cb").click(function() {
+    var ville=$("#ville").val();
+	var CB_URL="http://api.openweathermap.org/data/2.5/weather?q="+ville+",fr"; //http://cbslack.borelly.net/~cb/cbURL.php?q=meteo http://http://cbslack.borelly.net/~cb/cbJSON.php
+    //$("#msg").append("<br/>Click sur le bouton...");
+    var jsonQuery=null;
+    $.ajax({
+      url : CB_URL,
+      data : jsonQuery,
+      method: "GET",
+      dataType : "json"
+    }).done(function(jsonObj) {
+      console.log("AJAX OK...");
+	  $("#msg").append("<br/><br/>Town : "+jsonObj.name+" / Country : "+jsonObj.sys.country);
+      $("#msg").append("<br/>Longitude: "+jsonObj.coord.lon+" / Latitude: "+jsonObj.coord.lat);
+      $("#msg").append("<br/>Message : "+jsonObj.sys.message);
+	  $("#msg").append("<br/>Sunrise : "+jsonObj.sys.sunrise+" / Sunset: "+jsonObj.sys.sunset);
+	  $("#msg").append("<br/>Weather : "+jsonObj.weather[0].icon+" / "+jsonObj.weather[0].id+" / "+jsonObj.weather[0].main+" / "+jsonObj.weather[0].description);
+	  $("#msg").append("<br/>Base : "+jsonObj.base);
+	  $("#msg").append("<br/>Température : "+jsonObj.main.temp);
+	  $("#msg").append("<br/>Température max: "+jsonObj.main.temp_max);
+	  $("#msg").append("<br/>Température min: "+jsonObj.main.temp_min);
+	  $("#msg").append("<br/>Pression: "+jsonObj.main.pressure);
+	  $("#msg").append("<br/>Sea Level : "+jsonObj.main.sea_level);
+	  $("#msg").append("<br/>Ground Level : "+jsonObj.main.grnd_level);
+	  $("#msg").append("<br/>Humidity : "+jsonObj.main.humidity);
+	  $("#msg").append("<br/>Wind speed: "+jsonObj.wind.speed+" / Wind degree: "+jsonObj.wind.deg);
+	  $("#msg").append("<br/>Clouds : "+jsonObj.clouds.all);
+	  $("#msg").append("<br/>Dt : "+jsonObj.dt+" / Id : "+jsonObj.id+" / Cod : "+jsonObj.cod);
+    }).fail(function() {
+      $("#msg").append("<br/>AJAX error !!!");
+    });
+  });
+});
+</script>
+</body>
+</html>

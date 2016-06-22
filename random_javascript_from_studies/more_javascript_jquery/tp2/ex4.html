@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>TP2</title>
+		<meta name="author" content="Liozon Kévin" />
+		<meta name="description" content="tp2" />
+		<meta name="keywords"  content="" />
+		<meta name="Resource-type" content="Document" />
+
+
+		<link rel="stylesheet" type="text/css" href="css/style.css" />
+		
+	</head>
+	
+	<body>
+		
+		<header>
+					
+		</header>
+		
+		<aside>
+			<nav>
+				<div>
+					<ul>
+						<li id="menu1" width="10%" >1
+							<div id="ss_menu1" style="display:none">
+								1.1
+							</div>
+						</li>
+						<li id="menu2">2
+							<div id="ss_menu2" style="display:none">
+								2.1
+							</div>
+						</li>
+						<li id="menu3">3
+							<div id="ss_menu3" style="display:none">
+								3.1
+							</div>
+							<div id="ss_menu3_2" style="display:none">
+								<img src="images/beau.jpg">
+							</div>
+							
+						</li>
+					</ul>
+				</div>
+		</aside>
+		
+		<section id="main">
+		
+			<section id="section1">
+				<article class="intro">
+					
+				</article>				
+			</section>
+			
+		</section>
+				
+		<footer>
+        		
+		</footer>
+
+		<script type="text/javascript" src="js/jquery-1.7.1.js"></script>
+		<script type="text/javascript" src="js/jQueryRotate.2.2.js"></script>
+		
+		<script type="text/javascript">
+			$(document).ready(function()
+			{
+				$("#menu1").click(function()
+				{
+					$("#ss_menu1").slideToggle(200);					
+				});
+
+				$("#menu2").click(function()
+				{
+					$("#ss_menu2").slideToggle(200);					
+				});
+				
+				$("#menu3").click(function()
+				{
+					$("#ss_menu3").slideToggle(200);					
+				});
+				
+				$("#ss_menu3").click(function()
+				{
+					$("#ss_menu3_2").slideToggle(200);					
+				});
+			});
+		</script>
+	</body>
+	
+</html>

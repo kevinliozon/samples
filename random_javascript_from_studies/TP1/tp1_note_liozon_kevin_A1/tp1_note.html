@@ -1,0 +1,69 @@
+<html>
+	<head>
+		<title>Horloge</title>
+		<meta http-equiv="content-type" content="text/html; charset=iso-8859-1" />
+	</head>
+	<body>
+		<table>
+			<tr>
+				<td><img src="0.png" width="50%"></td>
+				<td><img src="0.png" width="50%"></td>
+				
+				<td><img src="colon.jpg" width="50%"></td>
+				
+				<td><img src="0.png" width="50%"></td>
+				<td><img src="0.png" width="50%"></td>
+				
+				<td><img src="colon.jpg" width="50%"></td>
+				
+				<td><img src="0.png" width="50%"></td>
+				<td><img src="0.png" width="50%"></td>
+
+			</tr>
+		</table>
+
+		<script>
+				
+		var d=new Date();		
+		setInterval("horloge();", 1000); // appel de la fonction horloge toutes les 1000 ms												
+		function horloge()
+		{		
+
+		var h=d.getHours()+"";
+		if(h<10) 
+			{
+			h="0"+h; //affiche un 0 sur les heures
+			}
+		var m=d.getMinutes()+"";
+		
+		if(m<10) 
+			{
+			m="0"+m; //affiche un 0 sur les minutes
+			}		
+		var s=d.getSeconds()+"";
+		
+		if(s<10) 
+			{
+			s="0"+s; //affiche un 0 sur les secondes
+			}
+			
+		var h1=h.substring(0,1);
+		var h2=h.substring(1);
+		document.images[0].src=h1+".png";
+		document.images[1].src=h2+".png";
+		
+		var m1=m.substring(0,1);
+		var m2=m.substring(1);
+		document.images[3].src=m1+".png";
+		document.images[4].src=m2+".png";
+		
+		var s1=s.substring(0,1);
+		var s2=s.substring(1);
+		document.images[6].src=s1+".png";
+		document.images[7].src=s2+".png",
+
+		d=new Date(); // On réactualise d pour éviter que l'horloge reste statique
+		}
+		</script>
+	</body>
+</html>

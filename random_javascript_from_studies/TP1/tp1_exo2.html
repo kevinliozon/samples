@@ -1,0 +1,104 @@
+<html>
+	<head>
+		<title>Exo 2</title>
+		<meta http-equiv="content-type" content="text/html; charset=iso-8859-1" />
+	</head>
+	<body>
+		<table>
+			<tr>
+				<td id="j1">Lundi</td>
+				<td id="j2">Mardi</td>
+				<td id="j3">Mercredi</td>
+				<td id="j4">Jeudi</td>
+				<td id="j5">Vendredi</td>
+				<td id="j6">Samedi</td>
+				<td id="j0">Dimanche</td>
+			</tr>
+		</table>
+		<table>
+			<tr>
+				<td id="d1">1</td>
+				<td id="d2">2</td>
+				<td id="d3">3</td>
+				<td id="d4">4</td>
+				<td id="d5">5</td>
+				<td id="d6">6</td>
+				<td id="d7">7</td>
+				<td id="d8">8</td>
+				<td id="d9">9</td>
+				<td id="d10">10</td>
+				<td id="d11">11</td>
+				<td id="d12">12</td>
+				<td id="d13">13</td>
+				<td id="d14">14</td>
+				<td id="d15">15</td>
+				<td id="d16">16</td>
+				<td id="d17">17</td>
+				<td id="d18">18</td>
+				<td id="d19">19</td>
+				<td id="d20">20</td>
+				<td id="d21">21</td>
+				<td id="d22">22</td>
+				<td id="d23">23</td>
+				<td id="d24">24</td>
+				<td id="d25">25</td>
+				<td id="d26">26</td>
+				<td id="d27">27</td>
+				<td id="d28">28</td>
+				<td id="d29">29</td>
+				<td id="d30">30</td>
+				<td id="d31">31</td>
+			</tr>
+		</table>		
+		<table>
+			<tr>
+				<td id="m1">Janvier</td>
+				<td id="m2">Février</td>
+				<td id="m3">Mars</td>
+				<td id="m4">Avril</td>
+				<td id="m5">Mai</td>
+				<td id="m6">Juin</td>
+				<td id="m7">Juillet</td>
+				<td id="m8">Août</td>
+				<td id="m9">Septembre</td>
+				<td id="m10">Octobre</td>
+				<td id="m11">Novembre</td>
+				<td id="m12">Décembre</td>
+			</tr>
+		</table>
+		<input id="horloge" size="8" disabled="true"> <!-- intégre une horloge qui ne sera pas éditable
+														   par l'utilisateur -->
+		<script>
+		var d= new Date();
+		var js=d.getDay(); //retourne 0 pour dimanche, 1 pour lundi etc...
+		var jm=d.getDate(); // pour jour 1, 2 etc...
+		var m=d.getMonth(); // pour mois
+		document.getElementById("j"+js).bgColor="red"; /*on obtient un élément par son identidfiant
+														bgcolor -> on affecte une couleur au fond*/
+		document.getElementById("d"+jm).bgColor="red";
+		document.getElementById("m"+m).bgColor="red";		
+		horloge(); // on appelle un 1re fois l'horloge avant de fixer l'intervalle												
+		setInterval("horloge();", 1000); // appel de la fonction horloge toutes les 1000 ms												
+		function horloge()
+		{												
+		var h=d.getHours();
+		if(h<10) 
+			{
+			h="0"+h; //affiche un 0 sur les heures
+			}
+		var m=d.getMinutes();
+		var s=d.getSeconds();
+		if(s<10) 
+			{
+			s="0"+s; //affiche un 0 sur les secondes
+			}
+		var heure=h+":"+m+":"+s;
+		document.getElementById("horloge").value=heure;
+		d=new Date(); // On réactualise d pour évuter que l'horloge reste statique
+		}
+		</script>
+	</body>
+</html>
+		
+				
+			

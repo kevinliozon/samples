@@ -1,0 +1,44 @@
+<html>
+	<head>
+		<title>Exo 1</title>
+		<meta http-equiv="content-type" content="text/html; charset=iso-8859-1" />
+	</head>
+	<body onload="charger_regions();">
+			Votre région: 
+			<select id="regions" onChange="charger_dep();">
+				
+			</select>
+			Votre département: 
+			<select id="dep">
+				
+			</select>	
+	</body>
+	<script>
+		function charger_regions()
+		{
+			var i=0;
+			for(var key in dep)
+			{
+				var opt=new Option(key);
+				document.getElementById("regions").options[i]=opt;
+				i++;
+			}
+			charger_dep();	
+		}
+		var dep={"Votre région":["Votre département"], 
+				"Bretagne":["Côte d'Armor","Îlle-et-vilaine","Finistère","Morbihan"], 
+				"Corse":["Corse du Sud","Haute-Corse"]};
+		function charger_dep()
+		{
+			document.getElementById("dep").options.length=0; // on vide la mémoire pour éviter d'avoir des départements Bretons en Corse
+			var iReg=document.getElementById("regions").selectedIndex; // récupération de l'id d'une région
+			var selReg=document.getElementById("regions").options[iReg]; // region sélectionnée
+			var sel_dep=dep[selReg.value]; // sel_dep=départment sélectionné
+			for (var i=0; i<sel_dep.length; i++)
+			{
+				var opt= new Option(sel_dep[i]);
+				document.getElementById("dep").options[i]=opt;
+			}
+		}
+	</script>
+</html>

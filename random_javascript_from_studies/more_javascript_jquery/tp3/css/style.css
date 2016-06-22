@@ -1,0 +1,22 @@
+body
+{
+	background-color:grey;
+}
+
+header
+{
+	text-align:center;
+}
+
+section
+{
+	text-align:center;
+}
+
+footer
+{
+	text-align:center;
+	margin: 30%;
+	width: 45%
+}
+

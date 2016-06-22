@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="store"> <!-- directive to run the application named 'store' -->
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Angular App</title>
+    <link href="css/reset.css" rel="stylesheet">
+	<link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+	<!--[if lt IE 9]>
+	  <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+	  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+	<![endif]-->
+</head>
+	<body ng-controller="StoreController as store"> <!-- directive to attach the controller named 'StoreController' -->
+    	<div class="main_wrapper">
+            <h1>{{"Gem"+" store"}}</h1>
+            <!-- PRODUCTS WITH TABS: PANEL CONTROLLER -->
+            <h2>{{"Products Panel Controller"}}</h2>
+            <section class="product_tabs" ng-controller="PanelController as panel"> <!-- We define a specific controller -->
+            	<!-- navbar -->
+                <div ng-repeat="product in store.product"> <!-- directive to display all the images inside our store without repeating ourselves -->
+                    <h3>{{product.name}}</h3>
+                    <h4>{{product.price | currency}}</h4>
+                    <ul>
+                        <li ng-repeat="images in product.images" ng-show="product.images.length"> <!-- display only if products have images -->
+                            <img ng-src="{{images.full}}"/>
+                        </li>
+                    </ul>
+                    <ul class="nav nav-pills">
+                        <li ng-class="{ active: panel.isSelected(1) }"> <!-- Add the class active to the element if selected (bootstrap property) -->
+                            <a href ng-click="panel.selectTab(1)">description</a> <!-- Trigger the selectTab method when a link inside a panel is clicked -->
+                        </li>
+                        <li ng-class="{ active: panel.isSelected(2) }">
+                            <a href ng-click="panel.selectTab(2)">Specifications</a>
+                        </li>
+                        <li ng-class="{ active: panel.isSelected(3) }">
+                            <a href ng-click="panel.selectTab(3)">Reviews</a>
+                        </li>
+                    </ul>
+                    <!-- contents -->
+                    <div class="panel" ng-show="panel.isSelected(1)"> <!-- Use the isSelected method to show the corresponding panel -->
+                        <h4>Description</h4>
+                        <p>{{product.description}}</p>
+                    </div>
+                    <div class="panel" ng-show="panel.isSelected(2)">
+                        <h4>Specifications</h4>
+                        <blockquote>Not yet</blockquote>
+                    </div>
+                    <div class="panel" ng-show="panel.isSelected(3)">
+                        <h4>Reviews</h4>
+                        <blockquote ng-repeat="review in product.reviews">
+                        	<b>Stars: {{review.stars}}</b>
+                            <p>{{review.body}}</p>
+                            <cite>By {{review.author}}</cite> 
+                        </blockquote>
+                    </div>
+                    <button ng-show="product.canPurchase">Add to Cart</button>
+                </div> 
+            </section>
+        </div>    
+        <!-- SCRIPTS -->
+        
+        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        <!-- Include all compiled plugins (below), or include individual files as needed -->
+        <script src="js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="js/angular.min.js"></script> <!-- library -->
+        <script type="text/javascript" src="js/angular_app2.js"></script> <!-- application -->
+	</body>
+</html>

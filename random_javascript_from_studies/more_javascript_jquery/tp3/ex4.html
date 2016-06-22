@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>TP3</title>
+		<meta name="author" content="Liozon Kévin" />
+		<meta name="description" content="tp3" />
+		<meta name="keywords"  content="" />
+		<meta name="Resource-type" content="Document" />
+
+
+		<link rel="stylesheet" type="text/css" href="css/style.css" />
+		
+	</head>
+	
+	<body>
+		
+		<header>
+			<img class="gael" src="images/beau.jpg" width="100px" height="100px">
+			<img class="gael" src="images/beau1.jpg" width="100px" height="100px">
+			<img class="gael" src="images/beau2.jpg" width="100px" height="100px">
+			<img class="gael" src="images/beau3.jpg" width="100px" height="100px">
+			<img class="gael" src="images/beau4.jpg" width="100px" height="100px">
+		</header>
+		
+		<section id="main">		
+			<section id="section1">
+				<article class="intro">
+					
+				</article>				
+			</section>
+			
+			<!-- zone d'insertion de l'image -->
+			<div id="zone_insertion">
+			</div>
+			
+		</section>
+				
+		<footer>
+        	<input type="radio" name="choice" id="copie"/> Copier 
+			<input type="radio" name="choice" id="deplace"/> Déplacer 
+			<input type="radio" name="choice" id="supprime"/> Supprimer 
+			<input type="radio" name="choice" id="rotd"/> Rotation droite
+			<input type="radio" name="choice" id="rotg"/> Rotation gauche
+			<input type="radio" name="choice" id="grow"/> Agrandir
+			<input type="radio" name="choice" id="reduce"/> Réduire
+			<br/>
+			Angle: <input type="text" name="angle" id="angle" value="90"/>
+			<button id='undo'>Undo</button>
+			<button id='redo'>Redo</button>
+			
+			<form NAME="form2">
+				<input type="file" name="nomImg" value="" maxlength="10"> <br/>
+				<input type="button" name="bouton" value="Afficher" onclick="afficher(this.form)">
+			</form>
+			
+		</footer>
+		
+		
+		<script type="text/javascript" src="js/jquery-1.7.1.js"></script>
+		<script type="text/javascript" src="js/jQueryRotate.2.2.js"></script>
+		
+		<script type="text/javascript">
+		
+			$(document).ready(function()
+			{
+				var element=null;
+				var clicked=false;
+				
+				var op=null;
+				
+				$("input:radio").click(function()
+				{				
+					op=$(this).attr("id");
+					//alert (op);
+				});
+				
+				$(".gael").click(function()
+				{
+					switch(op)
+					{
+						case "copie": copie($(this)); break;
+						case "deplace": deplace($(this)); break;
+						case "supprime": supprime($(this)); break;
+						case "rotd": rotd($(this), parseInt($("#angle").val())); break;
+						case "rotg": rotg($(this), parseInt($("#angle").val())); break;
+						case "grow": grow($(this)); break;
+						case "reduce": reduce($(this)); break;
+					}
+				});
+				
+				function copie(img) //img correspond à this
+				{																		
+					img.clone().appendTo(".intro");
+				}
+				
+				function deplace(img)
+				{
+						if(clicked)
+						{
+							clicked=false;
+							element=null;
+						}
+						else
+						{
+							clicked=true;
+							element=$(img);
+						}
+						
+						$(".gael").mousemove(function(e)
+						{
+							$(element).css({position:"absolute", top:e.pageY-45, left: e.pageX-45});
+						});
+				}
+				
+				function supprime(img)
+				{											
+						if(confirm("Supprimer?"))
+						{
+							img.remove();
+						};
+				}
+				
+				function rotd(img, angle)
+				{																		
+					img.rotate(angle);
+				}
+				
+				function rotg(img, angle)
+				{																		
+					img.rotate(-angle);
+				}
+				
+				function grow(img)
+				{											
+					img.animate({
+					height:"150px",
+					width:"150px"},200);
+				}
+				
+				function reduce(img)
+				{											
+					img.animate({
+					height:"100px",
+					width:"100px"},200);
+				}
+				
+			});
+			
+		</script>
+		<script type="text/javascript">
+ 
+ 
+			function afficher(monForm)
+			{
+				//La div qui va accueillir les images
+				var conteneur = document.getElementById('zone_insertion');
+ 
+				//Cr�ation d'une image vide
+				var monImg = document.createElement('img');
+ 
+				//On d�finit la source de l'image
+				monImg.src = $("input:file").val();
+				
+				//On ajoute l'image dans le conteneur
+				conteneur.appendChild(monImg);
+			}
+			
+		</script>		
+	</body>
+	
+</html>

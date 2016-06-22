@@ -1,0 +1,46 @@
+<html>	
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>TP1</title>
+		<meta name="author" content="Liozon Kévin" />
+		<meta name="description" content="tp1" />
+		<meta name="keywords"  content="" />
+		<meta name="Resource-type" content="Document" />
+		
+	</head>
+	<body>
+	
+		<header>
+				
+		</header>	
+		<form>
+			User: <input id="userid" type="text"> <br/>
+			Password: <input id="password"type="text"> <br/>
+			New password:<input id="newpass" type="text"> <br/>
+			Confirm password:<input id="confirm" type="text"> <br/>
+			Security level:<img src="images/low.png" id="security">
+			<br/>
+			<input type="button" id="ok" value="Valid">
+		</form>
+	
+		<script src="js/jquery-1.7.1.js" type="text/javascript"></script>
+		<script src="js/jQueryRotate.2.2.js" type="text/javascript"></script>
+		<script type="text/javascript">
+			jQuery(document).ready(function(){
+				$("#ok").click(function(){
+					
+					if(/[a-zA-Z0-9]{8,}/.test($("#newpass").attr("value"))==true){
+						
+						if(/([a-zA-Z0-9]{8,})([^a-zA-Z0-9])/.test($("#newpass").attr("value"))==true){
+							$("#security").attr("src", "images/high.png");
+						}else{
+							$("#security").attr("src", "images/normal.png");
+						}
+					}else $("#security").attr("src", "images/low.png");
+					
+				})
+			});
+		</script>
+	</body>	
+		
+</html>			

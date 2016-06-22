@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <link href="css/style.css" rel="stylesheet" type="text/css">
+    <script src="js/jquery-2.1.4.min.js"></script>
+    <title>Exercices JQuery</title>
+</head>
+<body>
+
+    <nav>
+        <ul class="menu">
+            <li><a href="#">Etat civil</a></li>
+            <li><a href="#">Connaissances</a></li>
+            <li><a href="#">Formation</a></li>
+            <li><a href="#">Expériences Professionnelles</a>
+                <ul>
+                    <li><a href="#">En entreprise</a></li>
+                    <li><a href="#">Portfolio</a></li>
+                </ul>
+            </li>
+            <li><a href="#">Autre</a>
+                <ul>
+                    <li><a href="#">Langues</a></li>
+                    <li><a href="#">Loisirs</a></li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+    
+<script>
+$(document).ready(function() {
+    $('.menu li').hover(
+        function() { 
+            $('ul:first', this).stop().slideDown();
+        },
+        
+        function() { 
+            $('ul:first', this).stop().slideUp();
+        });
+});
+</script>
+
+</body>
+</html>

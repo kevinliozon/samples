@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="store"> <!-- directive to run the application named 'store' -->
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Angular App</title>
+    <link href="css/reset.css" rel="stylesheet">
+	<link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+	<!--[if lt IE 9]>
+	  <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+	  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+	<![endif]-->
+</head>
+	<body ng-controller="StoreController as store"> <!-- directive to attach the controller named 'StoreController' -->
+    	<div class="main_wrapper">
+            <h1>{{"Gem"+" store"}}</h1>
+            <!-- HIDDEN LONE PRODUCT -->
+            <h2>{{"Lone"+" product"}}</h2>
+            <div ng-hide="store.product[0].soldOut"> <!-- directive to hide the product if 'soldOut' is true -->
+                <h3>{{store.product[0].name}}</h3>
+                <h4>${{store.product[0].price}}</h4>
+                <img ng-src="{{product.images[0].full}}"/> <!-- display image from an array -->
+                <p>{{store.product[0].description}}</p>
+                <button ng-show="store.product[0].canPurchase">Add to Cart</button> <!-- directive to show the button only if the expression 'canPurchase' is true -->
+            </div>
+            <!-- VISIBLE MULTIPLE PRODUCTS -->
+            <h2>{{"Multiple"+" products"}}</h2>
+            <div ng-repeat="product in store.product"> <!-- directive to repeat this section for each product -->
+                <h3>{{product.name}}</h3>
+                <h4>{{product.price | currency}}</h4> <!-- "| currency" localize the currency and displays the decimals -->
+                <img ng-src="{{product.images[0].full}}"/>
+                <p>{{product.description}}</p>
+                <button ng-show="product.canPurchase">Add to Cart</button> <!-- directive to show the button only if the epression 'canPurchase' is true -->
+            </div>
+            <!-- SOME FILTERS -->
+            <h3>{{"Display with uppercases"| uppercase}}</h3>
+            <h3>{{"Display 28 first characters blablabla" | limitTo:28}}</h3>
+            <h2>{{"Display only one"+" product from a list"}}</h2>
+            <div ng-repeat="product in store.product | limitTo:1"> <!-- directive to display only one of the products -->
+                <h3>{{product.name}}</h3>
+                <h4>{{product.price | currency}}</h4>
+                <img ng-src="{{product.images[0].full}}"/>
+                <p>{{product.description}}</p>
+                <button ng-show="product.canPurchase">Add to Cart</button>
+            </div>
+            <h3>{{"1460369849416"| date:"MM/dd/yyyy @ h:mma"}}</h3> <!--timestamp in milliseconds conversion-->
+            <h2>{{"Display by"+" descending prices"}}</h2>
+            <div ng-repeat="product in store.product | orderBy:'-price'"> <!-- directive to display by descending order of prices (without '-' it is ascending order) -->
+                <h3>{{product.name}}</h3>
+                <h4>{{product.price | currency}}</h4>
+                <img ng-src="{{product.images[0].full}}"/>
+                <p>{{product.description}}</p>
+                <button ng-show="product.canPurchase">Add to Cart</button>
+            </div>
+            <!-- IMAGE GALLERY -->
+            <h2>{{"Multiple"+" images"}}</h2>
+            <div ng-repeat="product in store.product"> <!-- directive to display all the images inside our store without repeating ourselves -->
+                <h3>{{product.name}}</h3>
+                <h4>{{product.price | currency}}</h4>
+                <ul>
+                    <li ng-repeat="images in product.images" ng-show="product.images.length"> <!-- display only if products have images -->
+                        <img ng-src="{{images.full}}"/>
+                    </li>
+                </ul>
+                <p>{{product.description}}</p>
+                <button ng-show="product.canPurchase">Add to Cart</button>
+            </div>
+            <!-- TABS -->
+            <h2>{{"Products"+" with tabs"}}</h2>
+            <section class="product_tabs">
+            	<!-- navbar -->
+            	<ul class="nav nav-pills">
+                	<li>
+                    	<a href ng-click="tab = 1">description</a>
+                    </li>
+                    <li>
+                    	<a href ng-click="tab = 2">Specifications</a>
+                    </li>
+                    <li>
+                    	<a href ng-click="tab = 3">Reviews</a>
+                    </li>
+                </ul>
+                {{tab}}
+                <!-- contents -->
+                <div class="panel" ng-show="tab === 1">
+                	<h4>Description</h4>
+                    <p>{{product.description}}</p>
+                </div>
+                <div class="panel" ng-show="tab === 2">
+                	<h4>Specifications</h4>
+                    <blockquote>Not yet</blockquote>
+                </div>
+                <div class="panel" ng-show="tab === 3">
+                	<h4>Reviews</h4>
+                    <blockquote>Not yet</blockquote>
+                </div>
+            </section>
+            <!-- PRODUCTS WITH TABS -->
+            <section class="product_tabs" ng-init="tab = 1"> <!-- initialise at tab 1 in case of refresh -->
+            	<!-- navbar -->
+                <div ng-repeat="product in store.product"> <!-- directive to display all the images inside our store without repeating ourselves -->
+                    <h3>{{product.name}}</h3>
+                    <h4>{{product.price | currency}}</h4>
+                    <ul>
+                        <li ng-repeat="images in product.images" ng-show="product.images.length"> <!-- display only if products have images -->
+                            <img ng-src="{{images.full}}"/>
+                        </li>
+                    </ul>
+                    <ul class="nav nav-pills">
+                        <li ng-class="{ active:tab === 1 }"> <!-- Add the class active to the element if selected (bootstrap property) -->
+                            <a href ng-click="tab = 1">description</a>
+                        </li>
+                        <li ng-class="{ active:tab === 2 }">
+                            <a href ng-click="tab = 2">Specifications</a>
+                        </li>
+                        <li ng-class="{ active:tab === 3 }">
+                            <a href ng-click="tab = 3">Reviews</a>
+                        </li>
+                    </ul>
+                    <!-- contents -->
+                    <div class="panel" ng-show="tab === 1">
+                        <h4>Description</h4>
+                        <p>{{product.description}}</p>
+                    </div>
+                    <div class="panel" ng-show="tab === 2">
+                        <h4>Specifications</h4>
+                        <blockquote>Not yet</blockquote>
+                    </div>
+                    <div class="panel" ng-show="tab === 3">
+                        <h4>Reviews</h4>
+                        <blockquote>Not yet</blockquote>
+                    </div>
+                    <button ng-show="product.canPurchase">Add to Cart</button>
+                </div> 
+            </section>
+            <!-- PRODUCTS WITH TABS: PANEL CONTROLLER -->
+            <h2>{{"Products Panel Controller"}}</h2>
+            <section class="product_tabs" ng-controller="PanelController as panel"> <!-- We define a specific controller -->
+            	<!-- navbar -->
+                <div ng-repeat="product in store.product"> <!-- directive to display all the images inside our store without repeating ourselves -->
+                    <h3>{{product.name}}</h3>
+                    <h4>{{product.price | currency}}</h4>
+                    <ul>
+                        <li ng-repeat="images in product.images" ng-show="product.images.length"> <!-- display only if products have images -->
+                            <img ng-src="{{images.full}}"/>
+                        </li>
+                    </ul>
+                    <ul class="nav nav-pills">
+                        <li ng-class="{ active: panel.isSelected(1) }"> <!-- Add the class active to the element if selected (bootstrap property) -->
+                            <a href ng-click="panel.selectTab(1)">description</a> <!-- Trigger the selectTab method when a link inside a panel is clicked -->
+                        </li>
+                        <li ng-class="{ active: panel.isSelected(2) }">
+                            <a href ng-click="panel.selectTab(2)">Specifications</a>
+                        </li>
+                        <li ng-class="{ active: panel.isSelected(3) }">
+                            <a href ng-click="panel.selectTab(3)">Reviews</a>
+                        </li>
+                    </ul>
+                    <!-- contents -->
+                    <div class="panel" ng-show="panel.isSelected(1)"> <!-- Use the isSelected method to show the corresponding panel -->
+                        <h4>Description</h4>
+                        <p>{{product.description}}</p>
+                    </div>
+                    <div class="panel" ng-show="panel.isSelected(2)">
+                        <h4>Specifications</h4>
+                        <blockquote>Not yet</blockquote>
+                    </div>
+                    <div class="panel" ng-show="panel.isSelected(3)">
+                        <h4>Reviews</h4>
+                        <blockquote>Not yet</blockquote>
+                    </div>
+                    <button ng-show="product.canPurchase">Add to Cart</button>
+                </div> 
+            </section>
+        </div>    
+        <!-- SCRIPTS -->
+        
+        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        <!-- Include all compiled plugins (below), or include individual files as needed -->
+        <script src="js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="js/angular.min.js"></script> <!-- library -->
+        <script type="text/javascript" src="js/angular_app.js"></script> <!-- application -->
+	</body>
+</html>

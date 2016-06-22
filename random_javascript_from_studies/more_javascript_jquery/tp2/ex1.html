@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>TP2</title>
+		<meta name="author" content="Liozon Kévin" />
+		<meta name="description" content="tp2" />
+		<meta name="keywords"  content="" />
+		<meta name="Resource-type" content="Document" />
+
+
+		<link rel="stylesheet" type="text/css" href="css/style.css" />
+		
+	</head>
+	
+	<body>
+		
+		<!-- voir cours 1 diapos 31/32 -->
+		
+		<header>
+			aimez vous le cours de JQuery?		
+		</header>
+
+		<section id="main">
+		
+			<section id="section1">
+				<article class="intro">
+					<form>
+						<input type="button" value="OUI" name="OUI" onclick="start()">
+						<input type="button" value="NON" name="NON" onmouseover="reverse()">
+					</form>	
+				</article>				
+			</section>
+			
+		</section>
+				
+		<footer>
+        		
+		</footer>
+
+		<script type="text/javascript" src="js/jquery-1.7.1.js"></script>
+		<script type="text/javascript" src="js/jQueryRotate.2.2.js"></script>
+		
+		<script type="text/javascript">
+			function reverse()
+			{
+				var non = $('input[name=NON]').offset();
+				var oui = $('input[name=OUI]').offset();
+				
+				$('input[name=NON]').offset(oui);
+				$('input[name=OUI]').offset(non);
+			}
+			function start()
+			{
+				alert("C'est bien ce que nous pensions!");
+			}
+		</script>
+		
+		<script type="text/javascript">
+		</script>
+		
+	</body>
+	
+</html>

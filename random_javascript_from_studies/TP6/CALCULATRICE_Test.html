@@ -1,0 +1,75 @@
+<html>
+<head></head>
+<body>
+<form name="calculatrice">
+    <table>
+        <caption>
+            <input type="text" size="20" maxlength="20" name="affichage">
+        </caption>
+		<tr>
+            <td><input type="button" value="AC" onclick="Suppr()"> </td>
+			<td><input type="button" value=" C " onclick="retire()"> </td>
+        </tr>
+        <tr>
+            <td><input type="button" value="7" onclick="ajoute('7')"></td>
+            <td><input type="button" value="8" onclick="ajoute('8')"></td>
+            <td><input type="button" value="9" onclick="ajoute('9')"></td>
+            <td><input type="button" value=" / " onclick="ajoute('/')"></td>
+        </tr>
+        <tr>
+            <td><input type="button" value="4" onclick="ajoute('4')"></td>
+            <td><input type="button" value="5" onclick="ajoute('5')"></td>
+            <td><input type="button" value="6" onclick="ajoute('6')"></td>
+            <td><input type="button" value=" * " onclick="ajoute('*')"></td>
+        </tr>
+        <tr>
+            <td><input type="button" value="1" onclick="ajoute('1')"></td>
+            <td><input type="button" value="2" onclick="ajoute('2')"></td>
+            <td><input type="button" value="3" onclick="ajoute('3')"></td>
+            <td><input type="button" value=" - " onclick="ajoute('-')"> </td>
+        </tr>
+        <tr>
+			<td><input type="button" value=" , " onclick="ajoute('.')"></td>
+            <td><input type="button" value="0" onclick="ajoute('0')"></td>
+            <td><input type="button" value=" = " id="egal" onclick="Resultat()"></td>
+            <td><input type="button" value=" + " onclick="ajoute('+')"></td>
+        </tr>
+		<tr>
+		<td><input type="button" value=" sqrt " onclick="Resultat2('sqrt')"> </td>
+            <td><input type="button" value=" exp " onclick="Resultat2('exp')"> </td>
+            <td><input type="button" value=" log " onclick="Resultat2('log')"> </td>
+		</tr>
+    </table>
+</form>
+<script>
+
+var calc = document.calculatrice.affichage;
+// Pour compacter, je met l'objet dans une variable
+
+function ajoute(Num)
+{
+calc.value += Num 
+} //J'ajoute un nombre + un autre nombre ou symboles
+
+function Suppr()
+{
+calc.value = ("") 
+} //Je change la chaine de caractère par une vide
+
+function Resultat()
+{
+calc.value = eval(document.calculatrice.affichage.value) 
+} //Je fais le calcule de la chaine de caractère
+
+function retire()
+{
+calc.value = document.calculatrice.affichage.value.substring(0,document.calculatrice.affichage.value.length-1)
+} //Je commence à l'indice 0, je prend la longueur de la chaine de caractère et je fais -1
+
+function Resultat2(special)
+{
+  calc.value = Math[special](eval(calc.value))
+}//j'utilise la fonction Math sur les opérations spécial, et je fais le calcule de la chaîne de caractère
+
+</script>
+</body>

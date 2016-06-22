@@ -1,0 +1,24 @@
+<html>
+	<head>
+		<title>Exo 3</title>
+		<meta http-equiv="content-type" content="text/html; charset=iso-8859-1" />
+	</head>
+	<body>
+			Nom d'utilisateur: <input type="text" onClick="foo(this);"/><br/>
+			Mot de passe: <input type="password" id="pwd"/><br/>
+			<input type="checkbox" onClick="bar(this);"/>Afficher / Masquer le mot de passe<br/>		
+	</body>
+	<script>
+		function bar(cc) // cc = Case à Cocher - on va définir comment afficher/masquer mdp
+		{
+			if(cc.checked)
+			{
+				document.getElementById("pwd").type="text";
+			}
+			else
+			{
+				document.getElementById("pwd").type="password";
+			}
+		}
+	</script>
+</html>

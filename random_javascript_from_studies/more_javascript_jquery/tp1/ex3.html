@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>TP1</title>
+		<meta name="author" content="Liozon Kévin" />
+		<meta name="description" content="tp1" />
+		<meta name="keywords"  content="" />
+		<meta name="Resource-type" content="Document" />
+
+
+		<link rel="stylesheet" type="text/css" href="css/style.css" />
+		
+	</head>
+	
+	<body>
+				
+		<header>
+			<form id="cb" action="tp1.html">
+				<input type="text" name="user" value="hello"/>
+				<input type="text" name="pass" value="world"/>
+			</form>				
+		</header>
+
+		<section id="main">
+		
+			<section id="section1">
+				<article class="intro">
+					pbdsjgfkjnh,
+				</article>
+				<article class="chrono">
+					<h1>Chrono</h1>
+					<!--<span id="h">00</span> h: <span id="m">00</span> m: <span id="s">00</span>,<span id="ms">000</span> s
+					<input type="button" value="START" id="play" onClick="horloge();"/>
+					<input type="button" value="RESET" id="play" onClick=""/>-->
+					<form name="forsec">
+						<input type="text" size="3" name="h"> heure(s)
+						<input type="text" size="3" name="m"> minute(s)
+						<input type="text" size="3" name="s"> secondes
+						<input type="text" size="3" name="d"> dixièmes
+
+
+						<input type="button" value="START" onclick="start()">
+						<input type="button" value="RESET" onclick="reset()">
+						<input type="button" value="STOP" onclick="stop()">
+						<input type="button" value="REVERSE" onclick="reverse()">
+					</form>
+					
+				</article>
+				<article class="affichage">
+					<textarea rows="4" cols="50" id="tpsint"></textarea>
+				</article>
+			</section>
+			
+		</section>
+				
+		<footer>
+        		
+		</footer>
+
+		<script type="text/javascript" src="js/jquery-1.7.1.js"></script>
+		<script type="text/javascript" src="js/jQueryRotate.2.2.js"></script>
+		<script type="text/javascript">
+		$(document).ready(function()
+		{
+			var a=$("form").attr("action");
+			console.log("action: "+a);
+			//alert("salut");
+		});
+		</script>
+		
+		<script type="text/javascript">
+		function pwdStrength(pwd)
+		{
+			console.log("pwdStrength("+pwd+")...");
+			
+		});
+		</script>
+		
+		<script type="text/javascript">
+			
+			var centi=0; // initialise les dixièmes
+			var secon=0; //initialise les secondes
+			var minu=0; //initialise les minutes
+			var heure=0; //initialise les heures
+			var time=" ";
+			
+			function start(){
+			
+			centi++; //incrémentation des dixièmes de 1
+			
+			if (centi>9) //si les dixièmes > 9,on les réinitialise à 0 et on incrémente les secondes de 1
+			{
+				centi=0;
+				secon++;
+			}
+			
+			if (secon>59) //si les secondes > 59, on les réinitialise à 0 et on incrémente les minutes de 1
+			{
+				secon=0;
+				minu++;
+			}
+			
+			if (minu>59) //si les heures > 59, on les réinitialise à 0 et on incrémente les heures de 1
+			{
+				minu=0;
+				heure++;
+			} 
+			
+			document.forsec.d.value=" "+centi; //on affiche les dixièmes
+			document.forsec.s.value=" "+secon; //on affiche les secondes
+			document.forsec.m.value=" "+minu; //on affiche les minutes
+			document.forsec.h.value=" "+heure; //on affiche les heures
+			count=setTimeout('start()',100); //la fonction est relancée tous les 10° de secondes			
+			}
+
+			function reset(){ //fonction qui remet les compteurs à 0
+			clearTimeout(count) //arrête la fonction chrono
+			centi=0;
+			secon=0;
+			minu=0;
+			document.forsec.d.value=" "+centi;
+			document.forsec.s.value=" "+secon;
+			document.forsec.m.value=" "+minu;
+			document.forsec.h.value=" "+heure;
+			}
+			
+			function reverse(){ /* compte à rebours */
+				
+				centi--; //décrémentation des dixièmes de 1
+				if (centi<0) //si les dixièmes < 0,on les réinitialise à 0 et on décrémente les secondes de 1
+				{
+					centi=9;
+					secon--;
+				}
+				
+				if (secon<0) //si les secondes < 0, on les réinitialise à 0 et on décrémente les minutes de 1
+				{
+					secon=59;
+					minu--;
+				}
+				
+				if (minu<0) //si les heures < 0, on les réinitialise à 0 et on décrémente les heures de 1
+				{
+					minu=59;
+					heure--;
+				}
+				
+				document.forsec.d.value=" "+centi; //on affiche les dixièmes
+				document.forsec.s.value=" "+secon; //on affiche les secondes
+				document.forsec.m.value=" "+minu; //on affiche les minutes
+				document.forsec.h.value=" "+heure; //on affiche les heures
+				count=setTimeout('reverse()',100); //la fonction est relancée tous les 10° de secondes	
+			}
+			
+			function stop () // PAUSE
+			{
+				clearTimeout(count);
+				time=time+heure+" h "+minu+" m "+secon+" s "+centi+" d "+"\n "; 
+				$("#tpsint").attr("value", time); 
+			}
+		
+		</script>
+		
+		<!--<script type="text/javascript">
+			var d=new Date();		
+			setInterval("horloge();", 1000); // appel de la fonction horloge toutes les 1000 ms												
+			function horloge()
+			{		
+
+			var h=d.getHours()+"";
+			if(h<10) 
+				{
+				h="0"+h; //affiche un 0 sur les heures
+				}
+			var m=d.getMinutes()+"";
+			
+			if(m<10) 
+				{
+				m="0"+m; //affiche un 0 sur les minutes
+				}		
+			var s=d.getSeconds()+"";
+			
+			if(s<10) 
+				{
+				s="0"+s; //affiche un 0 sur les secondes
+				}
+				
+			d=new Date(); // On réactualise d pour éviter que l'horloge reste statique
+			}
+        
+		</script>-->
+		
+	</body>
+	
+</html>

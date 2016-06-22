@@ -1,0 +1,207 @@
+body
+{
+	font-family: serif;
+}
+h1
+{
+	padding-bottom: 75px;
+	font-weight: bold;
+	font-family: sans-serif;
+	color: #5D1760;
+	font-size: 40px;
+	text-align: center;
+}
+a
+{
+    text-decoration: none;  
+}
+.main_wrap
+{
+	display: block;
+	margin: 0 auto;
+	width: 80%;
+}
+.menu  li 
+{
+    list-style: none;
+}
+
+.menu > li
+{
+    display: inline-block;
+    position: relative;
+}
+header
+{
+	display: block;
+	padding: 15px;
+	border-bottom: 5px solid #5D1760;
+	height: 100px;
+}
+/* clearfix */
+header:after
+{
+	content: "";
+	display: table;
+	clear: both;
+}
+header #logo_header
+{
+	float: left;
+	width: 200px;
+}
+header #logo_header img
+{
+	width: 100%;
+}
+#menu_header 
+{
+	text-align: center;
+	float: right;
+	padding: 35px 0;
+}
+#menu_header ul 
+{
+    margin: 0;
+    padding: 0;
+}
+#menu_header a 
+{
+    display: block;
+    color: #5D1760;
+    line-height: 2em;
+    text-align: center;
+    width: 80px;
+	font-weight: bold;
+	font-family: sans-serif;
+	font-size: 18px;
+}
+#menu_header a:hover 
+{
+	color: #fff;
+    background-color: #B095B1;
+}
+#menu_header ul .active 
+{
+	color: #fff;
+    background-color: #5D1760;
+}
+#menu_header ul .active a
+{
+	color: #fff;
+}
+
+#menu_header > .menu ul 
+{
+	position: absolute;
+    top: 2em;
+    left: 0;
+    display: none;
+}
+#content_area
+{
+	display: block;
+	padding: 50px 15%;
+	border-bottom: 5px solid #5D1760;
+}
+#content_area h2
+{
+	padding-bottom: 25px;
+	font-weight: bold;
+	font-family: sans-serif;
+	color: #5D1760;
+}
+#content_area p
+{
+	padding-bottom: 25px;
+	font-size: 17px;
+}
+#content_area > article p:before
+{
+	content:"\"";
+	color: #B095B1;
+}
+#content_area > article p:after
+{
+	content:"\"";
+	color: #B095B1;
+}
+#content_area > article > h2
+{
+	font-size: 20px;
+}
+#content_area > section > a h2
+{
+	font-size: 24px;
+}
+#content_area > article > p
+{
+	font-style: italic;
+}
+#content_area section p
+{
+	display: none;
+}
+#content_area section:nth-child(5) p
+{
+	display: block;
+}
+footer
+{
+	display: block;
+	width: 100%;	
+}
+#menu_footer
+{
+    text-align:center;
+	padding: 100px;
+}
+#menu_footer a 
+{
+    display: block;
+    color: #5D1760;
+    line-height: 2em;
+	font-size: 22px;
+	font-weight: bold;
+	font-family: sans-serif;
+    text-align: center;
+    width: 100px;
+}
+#menu_footer a:hover
+{
+    color: #B095B1;
+}
+@media screen and (max-width: 960px) 
+{
+	header
+	{
+		height: auto;
+	}
+	header #logo_header
+	{
+		float: none;
+		width: 100%;
+	}
+	#menu_header 
+	{
+		float: none;
+		width: 100%;
+	}
+	#menu_header a 
+	{
+		width: 60px;
+		font-size: 16px;
+	}
+}
+@media screen and (max-width: 640px)
+{
+	h2, p 
+	{
+		text-align: center;
+	}
+	#menu_header a 
+	{
+		width: 40px;
+		font-size: 12px;;
+	}
+}

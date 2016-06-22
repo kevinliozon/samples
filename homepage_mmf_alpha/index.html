@@ -1,0 +1,439 @@
+<!doctype html>
+<html class="no-js" lang="en" dir="ltr">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="x-ua-compatible" content="ie=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no">
+		<title>My Mini Factory</title>
+		<link rel="stylesheet" href="css/reset.css" />
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css" />
+		<link rel="stylesheet" href="css/foundation-icons.css" />
+		<link rel="stylesheet" type="text/css" href="css/flaticon.css">
+		<link rel="stylesheet" href="css/foundation.css" />
+		<link rel="stylesheet" type="text/css" href="css/slick.css"/>
+		<link rel="stylesheet" type="text/css" href="css/slick-theme.css"/>
+		<link rel="stylesheet" href="css/app.css" />
+		<script type="text/javascript" src="js/vendor/jquery.js"></script>
+		<script type="text/javascript" src="js/vendor/what-input.js"></script>
+		<script type="text/javascript" src="js/vendor/foundation.js"></script>
+		<script type="text/javascript" src="js/app.js"></script>
+		<script type="text/javascript" src="js/resizer.js"></script>
+		<script type="text/javascript" src="js/slick.min.js"></script>
+	</head>
+	<body>
+	<!-- WRAPPER -->
+	<div class="main_wrapper"> 
+		<!-- OFF CANVAS WRAPPER (for responsive top bar) -->
+		<div class="off-canvas-wrapper"><!-- data-sticky-container-->
+			<div class="off-canvas-wrapper-inner" data-off-canvas-wrapper><!-- sticky--><!-- data-sticky data-options="anchor: page; marginTop: 0; stickyOn: small;"--> 
+				<!-- off-canvas title bar for 'small' screen -->
+				<div class="title-bar" data-responsive-toggle="widemenu" data-hide-for="medium">
+					<div class="title-bar-left">
+						<button class="menu-icon" type="button" data-open="offCanvasLeft"></button>
+						<span class="title-bar-title"></span>
+					</div>
+					<div class="middle tab-bar-section mobilebase">
+						<a href="#"><div class="topbar_logo"></div></a>
+						<a href="#" data-reveal-id="loginscreen" class="mobilebase">&nbsp;</a>
+						<div id="drop1m" class="mobilebase" style="display:none; position: fixed; z-index: 999; padding: 20px; width: 94%; border: 1px solid rgb(153, 153, 153); margin: 3%;background-color: white;top: 0;left: 0;">
+							<form action="/login_check" method="post">
+								<input type="hidden" name="_csrf_token" value="XqFyCC5BXDltLye_n-gawCalQSf8JRRaM12jDGYLd2Y">
+								<label for="username">Username or Email address</label>
+								<input type="text" id="username" name="_username" value="" required="required"><br>
+								<label for="password">Password</label>
+								<input type="password" id="password" name="_password" required="required"><br>
+								<a href="/resetting/request" style="font-size:13px;">Forgot Password ??</a>
+								<br>
+								<input type="checkbox" id="remember_me" name="_remember_me" value="on">
+								<label for="remember_me">Remember Me</label>
+								<br>
+																		<input type="hidden" name="_target_path" value="homebundle_home_index">
+								
+								<input class="button mmfblue radius" type="submit" id="_submit" name="_submit" value="Login" style="margin-top: 4px;">
+
+								<a href="/social/login-facebook" class="button radius" style="padding-top: 3px;background-color: #3b5998;width: auto;padding: 3px 12px;margin-top: 3px;display: inline-block;float: left;"><i class="fi-social-facebook" style="font-size: 18px;"></i> Login with Facebook</a>	
+							</form>
+						</div>
+					</div>
+					<div class="title-bar-right"><span class="title-bar-title"></span>
+						<button class="menu-icon-right" type="button" data-open="offCanvasRight"><i class="fi-torsos large"></i></button> <!-- menu-icon-right is not part of Foundation -->
+					</div>
+				</div>		
+				<!-- off-canvas left menu -->
+				<div class="off-canvas position-left" id="offCanvasLeft" data-off-canvas>
+					<ul class="vertical dropdown menu" data-dropdown-menu>
+						<li><a href="left_item_1"><i class="flaticon-sports"></i>&nbsp;Toys&nbsp;&&nbsp;Games</a></li>
+						<li><a href="left_item_2"><i class="flaticon-computer"></i>&nbsp;Gadgets&nbsp;&&nbsp;Electronics</a></li>
+						<li><a href="left_item_3"><i class="flaticon-luxury"></i>&nbsp;Jewellery</a></li>
+						<li><a href="left_item_4"><i class="flaticon-paint"></i>&nbsp;Fan&nbsp;Art</a></li>
+						<li><a href="left_item_5"><i class="flaticon-war"></i>&nbsp;Props&nbsp;&&nbsp;Cosplay</a></li>
+						<li><a href="left_item_6"><i class="flaticon-bulb"></i>&nbsp;Home&nbsp;&&nbsp;Garden</a></li>
+						<li><a href="left_item_7"><i class="flaticon-person"></i>&nbsp;Education</a></li>
+						<li><a href="left_item_8"><i class="flaticon-globe"></i>&nbsp;Scan&nbsp;the&nbsp;World</a></li>
+						<li><a href="left_item_9"><i class="flaticon-mountain"></i>&nbsp;Sports&nbsp;&&nbsp;Outdoors</a></li>
+						<li><a href="left_item_10"><i class="flaticon-fashion"></i>&nbsp;Fashion&nbsp;&&nbsp;Accessories</a></li>
+						<li><a href="left_item_11"><i class="flaticon-home"></i>&nbsp;Accessibility</a></li>
+						<li><a href="left_item_12"><i class="flaticon-arrows"></i>&nbsp;Upcycling</a></li>
+					</ul>
+				</div>		
+				<!-- off-canvas right menu -->
+				<div class="off-canvas position-right" id="offCanvasRight" data-off-canvas data-position="right">
+					<ul class="vertical dropdown menu" data-dropdown-menu>
+						<li><a href="right_item_1"><i class="flaticon-arrow"></i>&nbsp;Login</a></li>
+						<li><a href="right_item_2"><i class="flaticon-networking"></i>&nbsp;Join&nbsp;Us</a></li>
+						<li><a href="right_item_3"><i class="flaticon-interface"></i>&nbsp;Share</a></li>
+						<li><a href="right_item_4"><i class="flaticon-technology"></i>&nbsp;Languages</a></li>
+					</ul>
+				</div>
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				<!-- original content goes in this container -->
+				<div class="off-canvas-content" data-off-canvas-content>
+					<div class="row column">
+						<!-- HEADER -->
+						<header id="mmf_header">
+							<div id="top_header" class="row">
+								<!-- Top left logo -->
+								<div class="large-2 columns show-for-large">
+									<a href="#"><div class="header_logo"></div></a>
+								</div>
+								<!-- Top nav -->
+								<nav id="commercial_nav" class="large-5 medium-5 small-5 columns text-center hide-for-small-only">
+									<div class="large-1 medium-1 columns show-for-large">&nbsp;</div>
+									<div class="large-2 medium-6 columns"><a href="#">Collections</a></div>
+									<div class="large-1 medium-1 columns show-for-medium">&nbsp;</div>
+									<div class="large-2 medium-6 columns"><a href="#">Challenges</a></div>
+									<div class="large-1 medium-1 columns show-for-medium">&nbsp;</div>
+									<div class="large-2 medium-6 columns"><a href="#">Store</a></div>
+									<div class="large-1 medium-1 columns show-for-large">&nbsp;</div>
+								</nav>
+								<div id="logo_medium" class="large medium-1 columns text-center show-for-medium-only">
+									<a href="#"><img src="img/logo_mobile.png" /></a>
+								</div>
+								<nav id="function_nav" class="large-5 medium-5 small-5 columns text-center hide-for-small-only">
+									<div class="large-3 medium-6 columns"><a href="#">Login</a></div>
+									<div class="large-3 medium-6 columns"><a href="#">Register</a></div>
+									<div class="large-3 medium-6 columns"><a href="#">Share</a></div>
+									<div class="large-3 medium-6 columns"><a href="#">Languages</a></div>
+								</nav>
+							</div>
+							<div id="middle_header">
+								<!-- Responsive logo -->
+								<div class="columns show-for-small-only">
+									<a href="#"><div id="header_logo_mobile"></div></a>
+								</div>
+								<!-- Middle header content -->
+								<h1 id="site_title">Build from virtual!</h1>
+								<h3 class="hide-for-small-only">Discover, download and 3d print exclusive designs from the best designers</h3>
+								<div class="has-form">
+									<div class="row collapse">
+										<div class="large-9 small-10 columns">
+											<input type="text" placeholder="SEARCH">
+										</div>
+										<div class="large-3 small-2 columns"> <a href="#" class="button expand"><i class="fa fa-search" aria-hidden="true"></i></a> </div>
+									</div>
+								</div>
+								<a href="#" id="howto" class="button">How to</a>
+							</div>
+							<div id="bottom_header" class="hide-for-small-only">
+								<!-- Bottom nav -->
+								<div id="explore_menu">
+									<nav class="row">
+										<div class="small-6 medium-6 large-6 columns">
+											<ul id="menu_nav1" class="small-up-3 medium-up-3 large-up-6">
+												<li class="column"><a href="#">
+													<p><i class="flaticon-sports"></i></p>
+													<p class="menu_label">Toys &&nbsp;Games</p>
+													</a>
+												</li>
+												<li class="column"><a href="#">
+													<p><i class="flaticon-computer"></i></p>
+													<p class="menu_label">Gadgets &&nbsp;Electronics</p>
+													</a>
+												</li>
+												<li class="column"><a href="#">
+													<p><i class="flaticon-luxury"></i></p>
+													<p class="menu_label">Jewellery</p>
+													</a>
+												</li>
+												<li class="column"><a href="#">
+													<p><i class="flaticon-paint"></i></p>
+													<p class="menu_label">Fan&nbsp;Art</p>
+													</a>
+												</li>
+												<li class="column"><a href="#">
+													<p><i class="flaticon-war"></i></p>
+													<p class="menu_label">Props &&nbsp;Cosplay</p>
+													</a>
+												</li>
+												<li class="column"><a href="#">
+													<p><i class="flaticon-bulb"></i></p>
+													<p class="menu_label">Home &&nbsp;Garden</p>
+													</a>
+												</li>
+											</ul>
+										</div>
+										<div class="small-6 medium-6 large-6 columns">
+											<ul id="menu_nav2" class="small-up-3 medium-up-3 large-up-6">
+												<li class="column"><a href="#">
+													<p><i class="flaticon-person"></i></p>
+													<p class="menu_label">Education</p>
+													</a>
+												</li>
+												<li class="column"><a href="#">
+													<p><i class="flaticon-globe"></i></p>
+													<p class="menu_label">Scan&nbsp;the World</p>
+													</a>
+												</li>
+												<li class="column"><a href="#">
+													<p><i class="flaticon-mountain"></i></p>
+													<p class="menu_label">Sports &&nbsp;Outdoors</p>
+													</a>
+												</li>
+												<li class="column"><a href="#">
+													<p><i class="flaticon-fashion"></i></p>
+													<p class="menu_label">Fashion &&nbsp;Accessories</p>
+													</a>
+												</li>
+												<li class="column"><a href="#">
+													<p><i class="flaticon-home"></i></p>
+													<p class="menu_label">Accessibility</p>
+													</a>
+												</li>
+												<li class="column"><a href="#">
+													<p><i class="flaticon-arrows"></i></p>
+													<p class="menu_label">Upcycling</p>
+													</a>
+												</li>
+											</ul>
+										</div>
+									</nav>
+								</div>
+							</div>
+						</header>
+						<!-- END HEADER -->
+						
+						
+						
+						
+						
+						<!-- SECTION UPLOADS -->
+						<section id="mmf_uploads">
+							 <div class="row med_wrap">
+							 	 <h2 class="home_titles">Check our Last Uploads!</h2>
+							 	 <!-- links to other pages on small screens -->
+								 <nav id="uploads_nav" class="large-2 columns show-for-small-only">								 	 
+									 <div class="large-12 small-6 columns"><a href="#">Featured</a></div>
+									 <div class="large-12 small-6 columns"><a href="#">New</a></div>
+									 <div class="large-12 small-6 columns"><a href="#">Popular</a></div>
+									 <div class="large-12 small-6 columns"><a href="#">Store</a></div>					
+								 </nav>
+								 <!-- filters for slider on medium and large screens -->
+							 	 <div id="uploads_filters" class="large-2 columns show-for-medium">								 	 
+									 <div class="large-12 small-6 columns"><span id="filter_featured">Featured</span></div>
+									 <div class="large-12 small-6 columns"><span id="filter_new">New</span></div>
+									 <div class="large-12 small-6 columns"><span id="filter_popular">Popular</span></div>
+									 <div class="large-12 small-6 columns"><span id="filter_store">Store</span></div>				
+								 </div>
+								 <!-- uploads slider -->
+								 <div id="uploads_slider" class="large-10 columns hide-for-small-only">
+								 		<figure class="uploads_slide"><img /><figcaption><img /><span>designer</span><cite>titre</cite></figcaption></figure>
+										<figure class="uploads_slide"><img /><figcaption><img /><span>designer</span><cite>titre</cite></figcaption></figure>
+										<figure class="uploads_slide"><img /><figcaption><img /><span>designer</span><cite>titre</cite></figcaption></figure>
+										<figure class="uploads_slide"><img /><figcaption><img /><span>designer</span><cite>titre</cite></figcaption></figure>
+										<figure class="uploads_slide"><img /><figcaption><img /><span>designer</span><cite>titre</cite></figcaption></figure>
+										<figure class="uploads_slide"><img /><figcaption><img /><span>designer</span><cite>titre</cite></figcaption></figure>
+										<figure class="uploads_slide"><img /><figcaption><img /><span>designer</span><cite>titre</cite></figcaption></figure>
+										<figure class="uploads_slide"><img /><figcaption><img /><span>designer</span><cite>titre</cite></figcaption></figure>
+										<figure class="uploads_slide"><img /><figcaption><img /><span>designer</span><cite>titre</cite></figcaption></figure>
+										<figure class="uploads_slide"><img /><figcaption><img /><span>designer</span><cite>titre</cite></figcaption></figure>
+								 </div>
+							 </div>	
+						</section>
+						<!-- END UPLOADS -->
+						<!-- SECTION BANNERS -->
+						<section id="mmf_banners">
+							<h2 class="home_titles">Explore our features!</h2>
+							<div class="lil_wrap">
+							 	 <div class="row small-collapse medium-uncollapse">								 	 
+									 <div class="large-8 small-12 columns banner rect"><a href="#"><img src="img/rectangle.jpg" alt="No image available"/><h3>Title1</h3></a></div>
+									 <div class="large-4 columns banner squared show-for-large"><a href="#"><img src="img/3d_printers.jpg" alt="No image available"/><h3>Title2</h3></a></div>		
+								 </div>
+								 <div class="row small-collapse medium-uncollapse">
+								 	 <div class="small-6 columns banner squared hide-for-large"><a href="#"><img src="img/3d_printers.jpg" alt="No image available"/><h3>Title2</h3></a></div>	 
+									 <div class="large-4 small-6 columns banner squared"><a href="#"><img src="img/3d_printers.jpg" alt="No image available"/><h3>Title3</h3></a></div>
+									 <div class="large-4 columns banner squared show-for-large"><a href="#"><img src="img/3d_printers.jpg" alt="No image available"/><h3>Title4</h3></a></div>
+									 <div class="large-4 columns banner squared show-for-large"><a href="#"><img src="img/3d_printers.jpg" alt="No image available"/><h3>Title5</h3></a></div>	
+								 </div>
+								 <div class="row hide-for-large small-collapse medium-uncollapse">								 	 
+									 <div class="small-6 columns banner squared"><a href="#"><img src="img/3d_printers.jpg" alt="No image available"/><h3>Title4</h3></a></div>
+									 <div class="small-6 columns banner squared"><a href="#"><img src="img/3d_printers.jpg" alt="No image available"/><h3>Title5</h3></a></div>		
+								 </div>
+								 <div class="row hide-for-large small-collapse medium-uncollapse">								 	 
+									 <div class="small-6 columns banner squared"><a href="#"><img src="img/3d_printers.jpg" alt="No image available"/><h3>Title6</h3></a></div>
+									 <div class="small-6 columns banner squared"><a href="#"><img src="img/3d_printers.jpg" alt="No image available"/><h3>Title8</h3></a></div>		
+								 </div>
+								 <div class="row small-collapse medium-uncollapse">								 	 
+									 <div class="large-4 columns banner squared show-for-large"><a href="#"><img src="img/3d_printers.jpg" alt="No image available"/><h3>Title6</h3></a></div>
+									 <div class="large-8 small-12 columns banner rect"><a href="#"><img src="img/rectangle.jpg" alt="No image available"/><h3>Title7</h3></a></div>		
+								 </div>
+								 <div class="row small-collapse medium-uncollapse">								 	 
+									 <div class="large-4 columns banner squared show-for-large"><a href="#"><img src="img/3d_printers.jpg" alt="No image available"/><h3>Title8</h3></a></div>
+									 <div class="large-4 small-6 columns banner squared"><a href="#"><img src="img/3d_printers.jpg" alt="No image available"/><h3>Title9</h3></a></div>
+									 <div class="large-4 small-6 columns banner squared"><a href="#"><img src="img/3d_printers.jpg" alt="No image available"/><h3>Title10</h3></a></div>		
+								 </div>
+							</div>
+						</section>
+						<!-- END BANNERS -->
+						<!-- SECTION SLIDER -->
+						<section id="mmf_slider" class="hide-for-small-only">
+								 <div id="home_slider">
+								 		<figure class="home_slide"><a href="#"><img src="img/bg.jpg" alt="No image available"/><figcaption><h2 class="home_titles">Get introduced to 3D Printing!</h2></figcaption></a></figure>
+										<figure class="home_slide"><a href="#"><img src="img/bg.jpg" alt="No image available"/><figcaption><h3>Some stuffs about learning1</h3></figcaption></a></figure>
+										<figure class="home_slide"><a href="#"><img src="img/bg.jpg" alt="No image available"/><figcaption><h3>Some stuffs about learning2</h3></figcaption></a></figure>
+										<figure class="home_slide"><a href="#"><img src="img/bg.jpg" alt="No image available"/><figcaption><h3>Some stuffs about learning3</h3></figcaption></a></figure>
+										<figure class="home_slide"><a href="#"><img src="img/bg.jpg" alt="No image available"/><figcaption><h3>Some stuffs about learning4</h3></figcaption></a></figure>
+										<figure class="home_slide"><a href="#"><img src="img/bg.jpg" alt="No image available"/><figcaption><h3>Some stuffs about learning5</h3></figcaption></a></figure>
+										<figure class="home_slide"><a href="#"><img src="img/bg.jpg" alt="No image available"/><figcaption><h3>Some stuffs about learning6</h3></figcaption></a></figure>
+										<figure class="home_slide"><a href="#"><img src="img/bg.jpg" alt="No image available"/><figcaption><h3>Some stuffs about learning7</h3></figcaption></a></figure>
+										<figure class="home_slide"><a href="#"><img src="img/bg.jpg" alt="No image available"/><figcaption><h3>Some stuffs about learning8</h3></figcaption></a></figure>
+										<figure class="home_slide"><a href="#"><img src="img/bg.jpg" alt="No image available"/><figcaption><h3>Some stuffs about learning9</h3></figcaption></a></figure>
+								 </div>
+						</section>
+						<!-- END SLIDER -->
+						<!-- SECTION DESIGNERS -->
+						<section id="mmf_designers" class="hide-for-small-only">
+							<div class="row med_wrap">
+								<h2 class="home_titles">Get introduced to our designers!</h2>
+								<div class="medium-6 large-3 columns home_designer">
+									<figure class="home_designer">
+										<a href="#"><img src="img/designer_test.jpg" alt="No image available"/><figcaption><h3>Designer 1</h3><q>designer statement</q></figcaption></a>
+									</figure>
+								</div>
+								<div class="medium-6 large-3 columns home_designer">
+									<figure class="home_designer">
+										<a href="#"><img src="img/designer_test.jpg" alt="No image available"/><figcaption><h3>Designer 2</h3><q>designer statement</q></figcaption></a>
+									</figure>
+								</div>
+								<div class="medium-6 large-3 columns home_designer">
+									<figure class="home_designer">
+										<a href="#"><img src="img/designer_test.jpg" alt="No image available"/><figcaption><h3>Designer 3</h3><q>designer statement</q></figcaption></a>
+									</figure>
+								</div>
+								<div class="medium-6 large-3 columns home_designer">
+									<figure class="home_designer">
+										<a href="#"><img src="img/designer_test.jpg" alt="No image available"/><figcaption><h3>Designer 4</h3><q>designer statement</q></figcaption></a>
+									</figure>
+								</div>
+							</div>	
+						</section>
+						<!-- END DESIGNERS -->
+						<!-- FOOTER -->
+						<footer id="mmf_footer">
+							<div id="footer_inner" class="row">
+									<div class="small-6 large-2 columns">
+											<h3>GET TO KNOW US</h3>
+											<ul>
+													<li><a href="#">About Us</a></li>
+													<li><a href="#">Blog</a></li>
+													<li><a href="#">FAQ</a></li>
+													<li><a href="#">WeDesign.live</a></li>
+											</ul>
+									</div>
+									<div class="small-6 large-2 columns">
+											<h3>COMPANY</h3>
+											<ul>
+													<li><a href="#">Careers</a></li>
+													<li><a href="#">Terms</a></li>
+													<li><a href="#">Privacy Policy</a></li>
+													<li><a href="#">Contact Us</a></li>
+													<li><a href="#">Advertise with MMF</a></li>
+													<li><a href="#">Go Digical</a></li>
+											</ul>
+			
+									</div>
+			
+									<div class="small-6 large-3 columns">
+											<h3>TOOLS AND FEATURES</h3>
+											<ul>
+													<li><a href="#">Upload</a></li>
+													<li><a href="#">Contests</a></li>
+													<li><a href="#">Store</a></li>
+													<li><a href="#">Manufacturers</a></li>
+													<li><a href="#">Design Softwares</a></li>
+											</ul>
+									</div>
+			
+									<div class="small-6 large-3 columns">
+			
+											<h3>&nbsp;</h3>
+											<ul>
+													<li><a href="#">MMFTV</a></li>
+													<li><a href="#">MMFideas</a></li>
+													<li><a href="#">mmfconnect</a></li>
+													<li><a href="#">Perks</a></li>
+													<li><a href="#">Wonderland</a></li>
+													<li><a href="#">Gallery</a></li>
+													<li><a href="#">Collections</a></li>
+													<li><a href="#">Printondemand</a></li>
+											</ul>
+									</div>
+			
+			
+									<div class="small-6 large-2 columns" style="padding: 0">
+											<h3 style="padding: 0">GET SOCIAL</h3>
+											<ul class="row social" style="padding: 0">
+													<li class="small-4 large-2 columns"><a href="https://www.facebook.com/myminiF" target="blank" class="facebook"></a></li>
+													<li class="small-4 large-2 columns"><a href="https://twitter.com/myminifactory" target="blank" class="twitter"></a></li>
+													<li class="small-4 large-2 columns"><a href="http://youtube.com/MyMiniFactory" target="blank" class="pinterest"></a></li>
+													<li class="small-4 large-2 columns"><a href="http://www.instagram.com/myminifactory " target="blank" class="instagram"></a></li>
+													<li class="small-4 large-2 columns"><a href="http://www.meetup.com/3D-Printing-New-York/" target="blank" class="meetup"></a><span id="meetup_us">US</span></li>
+													<li class="small-4 large-2 columns"><a href="http://www.meetup.com/3D-Printing-London/" target="blank" class="meetup"></a><span id="meetup_uk">UK</span></li>
+											</ul>
+			
+											<h3 style="padding-left: 0;">SUSCRIBE TO OUR NEWSLETTER</h3>
+			
+			
+													<!--<form action="//myminifactory.us11.list-manage.com/subscribe/post?u=d472931d3b83139f3fe4179d3&amp;id=8b11f7b191" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate style="padding: 0;">
+																	<div class="small-12 large-8 columns" style="padding:0;">
+																			<input type="email" value="" name="EMAIL" class="email" id="mce-EMAIL" placeholder="email address" required>
+																			<div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_d472931d3b83139f3fe4179d3_8b11f7b191" tabindex="-1" value=""></div>
+																	</div>
+																	<div class="small-12 large-4 columns" style="padding:0;">
+																			<input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button postfix mmfgrey2 radius" style="padding: 0;">
+																	</div>
+													</form>-->
+													<form action="//myminifactory.us11.list-manage.com/subscribe/post?u=d472931d3b83139f3fe4179d3&amp;id=8b11f7b191" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate style="padding: 0;">
+														<div class="has-form">
+															<div class="row collapse">
+																<div class="small-12 large-8 columns" style="padding:0;">
+																	<input type="email" value="" name="EMAIL" class="email" id="mce-EMAIL" placeholder="email address" required>
+																</div>
+																<div class="large-3 small-2 columns">
+																	<input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button postfix mmfgrey2 radius" style="padding: 0;">
+																</div>
+															</div>
+														</div>
+													</form>
+			
+											<span style="color:#888; text-align: center;font-size: 12px;margin-top: 20px;">Copyrights</span>
+									</div>
+							</div>
+						</footer>
+						<!-- END FOOTER -->
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- END OFF CANVAS WRAPPER --> 
+	</div>
+	<!-- END WRAPPER -->
+	</body>
+</html>

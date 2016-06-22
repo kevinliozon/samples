@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="jquery-1.11.2.min.js"/></script>
+  <link href="style-json.css" type="text/css" rel="stylesheet"/>
+</head>
+<body>
+  <div>
+    <button id="cb"/>AJAX</button>
+    <span id="msg"></span>
+  </div>
+
+<script>
+//var CB_URL="http://pccb/jQuery/cbJSON.php";
+var CB_URL="http://http://cbslack.borelly.net/~cb/cbJSON.php";
+$(document).ready(function(){
+  $("#cb").click(function() {
+    $("#msg").append("<br/>Click sur le bouton...");
+    var request=new XMLHttpRequest();
+    request.onreadystatechange=function() {
+      console.log("AJAX("+request.readyState+","+request.status+")...");
+      if (request.readyState==4 && request.status==200) {
+        var type=request.getResponseHeader("Content-Type");
+        console.log("Content-Type ["+type+"]");
+        if(type.match(/application\/json/)) {
+          // {"i1": 1, "i2": 2,"i3": {"i4": 4, "i5": {"i6": 6}}}
+          var jsonObj=JSON.parse(request.responseText);
+          $("#msg").append("<br/>I2 : "+jsonObj.i2);
+          $("#msg").append("<br/>I6 : "+jsonObj.i3.i5.i6);
+        }
+      }
+    }
+    request.open("GET",CB_URL);
+    request.send();
+  });
+});
+</script>
+</body>
+</html>
